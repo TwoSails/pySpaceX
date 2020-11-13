@@ -15,19 +15,23 @@ class Dragons:
         return response.json()
 
     def dragons(self):
-        """
-        Returns information on all dragon capsules
+        """Gets information on all dragon capsules
+
+        Returns:
+            data: JSON String
         """
         data = self.get_data(params=None)
 
         return data
 
-    def one_dragon(self, serial):
-        """
-        Returns information on a single dragon capsule
+    def one_dragon(self, id):
+        """Gets information on a single dragon capsule
+
+        Returns:
+            data: JSON String
         """
 
-        params = {'core_serial': serial}
+        params = {'id': id}
         data = self.get_data(params=params)
 
         return data[0]

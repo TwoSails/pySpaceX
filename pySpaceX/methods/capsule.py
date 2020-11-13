@@ -27,6 +27,9 @@ class Capsule:
     def one_capsule(self, serial):
         """Gets information about one capsule
 
+        Args:
+            serial: Capsule serial number
+
         Returns:
             data: JSON String
         """
@@ -35,9 +38,12 @@ class Capsule:
 
         return data[0]
 
-    def past_capsule(self, capsule_serial=None, capsule_id=None, status=None, original_launch=None, mission=None,
+    def past_capsule(self, capsule_serial: str = None, capsule_id=None, status=None, original_launch=None, mission=None,
                      landings=None, type=None, reuse_count=None):
         """Gets information about capsules which have flown before
+
+        Args:
+            capsule_serial (str, optional): capsule serial
 
         Returns:
             data: JSON String
