@@ -18,7 +18,7 @@ class Cores:
         """
         Returns information on all cores
         """
-        data = self.get_data(None, params=None)
+        data = self.get_data('', params=None)
 
         return data
 
@@ -28,7 +28,7 @@ class Cores:
         """
 
         params = {'core_serial': serial}
-        data = self.get_data(None, params=params)
+        data = self.get_data('', params=params)
 
         return data[0]
 
@@ -51,7 +51,7 @@ class Cores:
                   'asds_landings': asds_landings,
                   'water_landing': water_landing
                   }
-        data = self.get_data('/upcoming/', params=params)
+        data = self.get_data('/upcoming', params=params)
 
         return data
 

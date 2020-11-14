@@ -20,7 +20,7 @@ class Info:
         Returns:
             data: JSON String
         """
-        data = self.get_data('/info', params=None)
+        data = self.get_data('info', params=None)
 
         return data
 
@@ -31,6 +31,6 @@ class Info:
             data: JSON String
         """
 
-        data = self.get_data(None, params=None)
+        data = self.get_data('', params=None)
 
         return data

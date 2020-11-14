@@ -7,7 +7,7 @@ class Roadster:
     """
 
     def __init__(self, url):
-        self.url = f'{url}/roadster/'
+        self.url = f'{url}/roadster'
 
     def get_data(self, url, params):
         response = requests.get(self.url + url, params=params)
@@ -20,6 +20,6 @@ class Roadster:
         Returns:
             data: JSON String
         """
-        data = self.get_data(None, params=None)
+        data = self.get_data('', params=None)
 
         return data

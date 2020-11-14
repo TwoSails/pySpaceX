@@ -20,7 +20,7 @@ class Capsule:
         Returns:
             data: JSON String
         """
-        data = self.get_data(None, params=None)
+        data = self.get_data('', params=None)
 
         return data
 
@@ -34,7 +34,7 @@ class Capsule:
             data: JSON String
         """
         params = {'capsule_serial': serial}
-        data = self.get_data(None, params=params)
+        data = self.get_data('', params=params)
 
         return data[0]
 

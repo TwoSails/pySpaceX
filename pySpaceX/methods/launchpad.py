@@ -7,7 +7,7 @@ class Launchpad:
     """
 
     def __init__(self, url):
-        self.url = f'{url}/launchpads/'
+        self.url = f'{url}/launchpads'
 
     def get_data(self, url, params):
         response = requests.get(self.url + url, params=params)
@@ -20,7 +20,7 @@ class Launchpad:
         Returns:
             data: JSON String
         """
-        data = self.get_data(None, params=None)
+        data = self.get_data('', params=None)
 
         return data
 
@@ -34,6 +34,6 @@ class Launchpad:
             data: JSON String
         """
 
-        data = self.get_data(f'{site_id}', params=None)
+        data = self.get_data(f'/{site_id}', params=None)
 
         return data

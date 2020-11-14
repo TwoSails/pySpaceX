@@ -7,7 +7,7 @@ class Landing:
     """
 
     def __init__(self, url):
-        self.url = f'{url}/landingpads/'
+        self.url = f'{url}/landingpads'
 
     def get_data(self, url, params):
         response = requests.get(self.url + url, params=params)
@@ -20,7 +20,7 @@ class Landing:
         Returns:
             data: JSON String
         """
-        data = self.get_data(None, params=None)
+        data = self.get_data('', params=None)
 
         return data
 
@@ -31,6 +31,6 @@ class Landing:
             data: JSON String
         """
 
-        data = self.get_data(f'{id}', params=None)
+        data = self.get_data(f'/{id}', params=None)
 
         return data

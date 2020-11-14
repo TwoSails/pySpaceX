@@ -7,7 +7,7 @@ class Launches:
     """
 
     def __init__(self, url):
-        self.url = f'{url}/'
+        self.url = f'{url}/launches'
 
     def get_data(self, url, params):
         response = requests.get(self.url + url, params=params)
@@ -23,7 +23,7 @@ class Launches:
         Returns:
             data: JSON String
         """
-        data = self.get_data('launches', params=params)
+        data = self.get_data('', params=params)
 
         return data
 
@@ -39,7 +39,7 @@ class Launches:
 
         params = {"flight_number": flight_number}
 
-        data = self.get_data("launches", params=params)
+        data = self.get_data("", params=params)
 
         return data
 
@@ -52,7 +52,7 @@ class Launches:
         Returns:
             data: JSON String
         """
-        data = self.get_data('launches/past', params=params)
+        data = self.get_data('/past', params=params)
 
         return data
 
@@ -65,7 +65,7 @@ class Launches:
         Returns:
             data: JSON String
         """
-        data = self.get_data('launches/upcoming', params=params)
+        data = self.get_data('/upcoming', params=params)
 
         return data
 
@@ -75,7 +75,7 @@ class Launches:
         Returns:
             data: JSON String
         """
-        data = self.get_data('launches/latest', params=None)
+        data = self.get_data('/latest', params=None)
 
         return data
 
@@ -85,6 +85,6 @@ class Launches:
         Returns:
             data: JSON String
         """
-        data = self.get_data('launches/next', params=None)
+        data = self.get_data('/next', params=None)
 
         return data

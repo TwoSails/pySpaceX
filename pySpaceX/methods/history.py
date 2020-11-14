@@ -20,7 +20,7 @@ class History:
         Returns:
             data: JSON String
         """
-        data = self.get_data(None, params=None)
+        data = self.get_data('', params=None)
 
         return data
 
@@ -32,6 +32,6 @@ class History:
         """
 
         params = {'id': id}
-        data = self.get_data(None, params=params)
+        data = self.get_data('', params=params)
 
         return data

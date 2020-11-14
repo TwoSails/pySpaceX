@@ -7,7 +7,7 @@ class Ships:
     """
 
     def __init__(self, url):
-        self.url = f'{url}/ships/'
+        self.url = f'{url}/ships'
 
     def get_data(self, url, params):
         response = requests.get(self.url + url, params=params)
@@ -23,7 +23,7 @@ class Ships:
         Returns:
             data: JSON String
         """
-        data = self.get_data(None, params=params)
+        data = self.get_data('', params=params)
 
         return data
 
@@ -37,6 +37,6 @@ class Ships:
             data: JSON String
         """
 
-        data = self.get_data(f'{ship_id}', params=None)
+        data = self.get_data(f'/{ship_id}', params=None)
 
         return data

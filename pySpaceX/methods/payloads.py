@@ -7,7 +7,7 @@ class Payload:
     """
 
     def __init__(self, url):
-        self.url = f'{url}/payloads/'
+        self.url = f'{url}/payloads'
 
     def get_data(self, url, params):
         response = requests.get(self.url + url, params=params)
@@ -23,7 +23,7 @@ class Payload:
         Returns:
             data: JSON String
         """
-        data = self.get_data(None, params=params)
+        data = self.get_data('', params=params)
 
         return data
 
@@ -37,6 +37,6 @@ class Payload:
             data: JSON String
         """
 
-        data = self.get_data(f'{payload_id}', params=None)
+        data = self.get_data(f'/{payload_id}', params=None)
 
         return data

@@ -2,7 +2,7 @@
 Program: A www.spacexdata.com API Wrapper
 Author: TwoSails
 Description: A simple python API Wrapper made for use with the www.spacexdata.com
-Version: 1.0.0 BETA
+Version: 1.0.0
 """
 import requests
 from .methods.capsule import Capsule
@@ -17,6 +17,7 @@ from .methods.payloads import Payload
 from .methods.roadster import Roadster
 from .methods.rockets import Rockets
 from .methods.ships import Ships
+from .methods.info import Info
 
 __version__ = '1.0.0'
 
@@ -28,7 +29,7 @@ class Space:
 
     def __init__(self):
         self.APIver = 'v3'
-        self.url = f'www.api.spacexdata.com/{self.APIver}'
+        self.url = f'https://api.spacexdata.com/{self.APIver}'
 
     def get_data(self, params):
         """
@@ -139,6 +140,13 @@ class Space:
         """
         return Ships(self.url)
 
+    def get_info(self):
+        """Gets information about SpaceX and the api
+
+        Returns:
+            Info: Info Object
+        """
+        return Info(self.url)
 
 
 
