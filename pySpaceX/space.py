@@ -2,30 +2,31 @@
 Program: A www.spacexdata.com API Wrapper
 Author: TwoSails
 Description: A simple python API Wrapper made for use with the www.spacexdata.com
-Version: 1.0.0
+Version: 1.0.1
 """
-import requests
-from .methods.capsule import Capsule
-from .methods.cores import Cores
-from .methods.dragons import Dragons
-from .methods.history import History
-from .methods.landing import Landing
-from .methods.launches import Launches
-from .methods.launchpad import Launchpad
-from .methods.missions import Missions
-from .methods.payloads import Payload
-from .methods.roadster import Roadster
-from .methods.rockets import Rockets
-from .methods.ships import Ships
-from .methods.info import Info
 
-__version__ = '1.0.0'
+import requests
+from pySpaceX.methods.capsule import Capsule
+from pySpaceX.methods.cores import Cores
+from pySpaceX.methods.dragons import Dragons
+from pySpaceX.methods.history import History
+from pySpaceX.methods.landing import Landing
+from pySpaceX.methods.launches import Launches
+from pySpaceX.methods.launchpad import Launchpad
+from pySpaceX.methods.missions import Missions
+from pySpaceX.methods.payloads import Payload
+from pySpaceX.methods.roadster import Roadster
+from pySpaceX.methods.rockets import Rockets
+from pySpaceX.methods.ships import Ships
+from pySpaceX.methods.info import Info
 
 
 class Space:
     """
     Represents SpaceAPI object with general methods
     """
+
+    __version__ = '1.0.1'
 
     def __init__(self):
         self.APIver = 'v3'

@@ -1,14 +1,12 @@
 # pySpaceX
-This is an unofficial Python3 [SpaceX API](https://api.spacexdata.com) wrapper
-
-Documentation of the API is at https://docs.spacexdata.com
+This is an unofficial Python3 [SpaceX API](https://docs.spacexdata.com) wrapper
 
 ## Installation
 Currently unavailable on PyPi
 
-To install you have to clone the repository by using:
+To install you can simply install the package by using:
 
-`gh repo clone TwoSails/pySpaceX` or `https://github.com/TwoSails/pySpaceX.git`
+`python3 -m pip install pySpaceX`
 
 The code can also be directly downloaded from the latest release:
 
@@ -17,9 +15,9 @@ https://github.com/TwoSails/pySpaceX/releases
 ## Usage
 To get started with using this wrapper we need to start with the creation of an api instance:
 ```python
-from pySpaceX import space
+from pySpaceX import Space
 
-api = space.Space()
+api = Space()
 ```
 
 To get information about the API use:

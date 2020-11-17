@@ -1,5 +1,5 @@
-__version__ = "1.0.0 BEA"
+from pySpaceX import space
 
+api = space.Space()
 
-def test_version() -> None:
-    assert __version__ == "1.0.0 BETA"
+print(api.get_roadster())
