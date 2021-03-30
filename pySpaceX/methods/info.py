@@ -20,7 +20,7 @@ class Info:
         Returns:
             data: JSON String
         """
-        data = self.get_data('info', params=None)
+        data = self.get_data('company', params=None)
 
         return data
 

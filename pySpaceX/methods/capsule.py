@@ -24,61 +24,16 @@ class Capsule:
 
         return data
 
-    def one_capsule(self, serial):
+    def one_capsule(self, id):
         """Gets information about one capsule
 
         Args:
-            serial: Capsule serial number
+            id: Capsule serial number
 
         Returns:
             data: JSON String
         """
-        params = {'capsule_serial': serial}
+        params = {'id': id}
         data = self.get_data('', params=params)
 
         return data[0]
-
-    def past_capsule(self, capsule_serial: str = None, capsule_id=None, status=None, original_launch=None, mission=None,
-                     landings=None, type=None, reuse_count=None):
-        """Gets information about capsules which have flown before
-
-        Args:
-            capsule_serial (str, optional): capsule serial
-
-        Returns:
-            data: JSON String
-        """
-        params = {'capsule_serial': capsule_serial,
-                  'capsule_id': capsule_id,
-                  'status': status,
-                  'original_launch': original_launch,
-                  'mission': mission,
-                  'landings': landings,
-                  'type': type,
-                  'reuse_count': reuse_count
-                  }
-
-        data = self.get_data('/past', params=params)
-
-        return data
-
-    def upcoming_capsule(self, capsule_serial=None, capsule_id=None, status=None, original_launch=None, mission=None,
-                         landings=None, type=None, reuse_count=None):
-        """Gets information about capsules which haven't launched yet
-
-        Returns:
-            data: JSON String
-            """
-        params = {'capsule_serial': capsule_serial,
-                  'capsule_id': capsule_id,
-                  'status': status,
-                  'original_launch': original_launch,
-                  'mission': mission,
-                  'landings': landings,
-                  'type': type,
-                  'reuse_count': reuse_count
-                  }
-
-        data = self.get_data('/upcoming', params=params)
-
-        return data

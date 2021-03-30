@@ -1,21 +1,21 @@
 import requests
 
 
-class Missions:
+class Fairings:
     """
-    Represents SpaceX Missions Object
+    Represents SpaceX Fairing Object
     """
 
     def __init__(self, url):
-        self.url = f'{url}/missions'
+        self.url = f'{url}/fairings'
 
     def get_data(self, url, params):
         response = requests.get(self.url + url, params=params)
 
         return response.json()
 
-    def missions(self):
-        """Gets information about all SpaceX missions
+    def fairings(self):
+        """Gets information about all fairings
 
         Returns:
             data: JSON String
@@ -24,16 +24,16 @@ class Missions:
 
         return data
 
-    def one_landing_pad(self, id):
-        """Gets information about a single SpaceX landing pad
+    def one_fairing(self, id):
+        """Gets information about one fairing
 
         Args:
-            id: mission id
+            id: Fairing serial number
 
         Returns:
             data: JSON String
         """
+        params = {'id': id}
+        data = self.get_data('', params=params)
 
-        data = self.get_data('', params={'id': id})
-
-        return data
+        return data[0]

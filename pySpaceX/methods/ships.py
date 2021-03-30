@@ -27,16 +27,16 @@ class Ships:
 
         return data
 
-    def one_payload(self, ship_id):
+    def one_payload(self, id):
         """Gets information about a single SpaceX ship
 
         Args:
-            ship_id (str): ship id
+            id: ship id
 
         Returns:
             data: JSON String
         """
 
-        data = self.get_data(f'/{ship_id}', params=None)
+        data = self.get_data('', params={'id': id})
 
         return data

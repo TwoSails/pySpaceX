@@ -7,6 +7,7 @@ Version: 1.0.1
 
 import requests
 from pySpaceX.methods.capsule import Capsule
+from pySpaceX.methods.crew import Crew
 from pySpaceX.methods.cores import Cores
 from pySpaceX.methods.dragons import Dragons
 from pySpaceX.methods.history import History
@@ -14,10 +15,12 @@ from pySpaceX.methods.landing import Landing
 from pySpaceX.methods.launches import Launches
 from pySpaceX.methods.launchpad import Launchpad
 from pySpaceX.methods.missions import Missions
-from pySpaceX.methods.payloads import Payload
+from pySpaceX.methods.payloads import Payloads
+from pySpaceX.methods.fairings import Fairings
 from pySpaceX.methods.roadster import Roadster
 from pySpaceX.methods.rockets import Rockets
 from pySpaceX.methods.ships import Ships
+from pySpaceX.methods.starlink import Starlink
 from pySpaceX.methods.info import Info
 
 
@@ -26,7 +29,7 @@ class Space:
     Represents SpaceAPI object with general methods
     """
 
-    __version__ = '1.1.0'
+    __version__ = '1.1.1'
 
     def __init__(self):
         self.APIver = 'v4'
@@ -52,6 +55,14 @@ class Space:
             Capsule: Capsule Object
         """
         return Capsule(self.url)
+
+    def get_crew(self):
+        """Gets information about SpaceX crew members
+
+        Returns:
+            Crew: Crew Object
+        """
+        return Crew(self.url)
 
     def get_core(self):
         """Gets information about SpaceX core stages
@@ -113,9 +124,17 @@ class Space:
         """Gets information about SpaceX payloads
 
         Returns:
-            Payload: Payload Object
+            Payloads: Payloads Object
         """
-        return Payload(self.url)
+        return Payloads(self.url)
+
+    def get_fairings(self):
+        """Gets information about SpaceX fairings
+
+        Returns:
+            Fairings: Fairings Object
+        """
+        return Fairings(self.url)
 
     def get_rockets(self):
         """Gets information about SpaceX rockets
@@ -140,6 +159,14 @@ class Space:
             Ships: Ships Object
         """
         return Ships(self.url)
+
+    def get_starlink(self):
+        """Gets information about SpaceX Starlink sats
+
+        Returns:
+            Starlink: Starlink Object
+        """
+        return Starlink(self.url)
 
     def get_info(self):
         """Gets information about SpaceX and the api

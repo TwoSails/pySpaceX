@@ -14,58 +14,49 @@ class Launches:
 
         return response.json()
 
-    def launches(self, params: dict = None):
+    def launches(self):
         """Gets general launch information about SpaceX Launches
-
-        Args:
-            params (dict, optional): https://docs.spacexdata.com/#bc65ba60-decf-4289-bb04-4ca9df01b9c1
 
         Returns:
             data: JSON String
         """
-        data = self.get_data('', params=params)
+        data = self.get_data('', params=None)
 
         return data
 
-    def one_launch(self, flight_number: int):
+    def one_launch(self, id):
         """Gets information on one Launch
 
         Args:
-            flight_number (int): flight number
+            id: launch id
 
         Returns:
             data: JSON String
         """
 
-        params = {"flight_number": flight_number}
+        params = {'id': id}
 
         data = self.get_data("", params=params)
 
         return data
 
-    def past_launches(self, params: dict):
+    def past_launches(self):
         """Gets past launch information about SpaceX Launches
-
-        Args:
-            params (dict): https://docs.spacexdata.com/#fce450d6-e064-499a-b88d-34cc22991bcc
 
         Returns:
             data: JSON String
         """
-        data = self.get_data('/past', params=params)
+        data = self.get_data('/past', params=None)
 
         return data
 
-    def upcoming_launch(self, params: dict):
+    def upcoming_launch(self):
         """Gets upcoming launch information about SpaceX Launches
-
-        Args:
-            params (dict): https://docs.spacexdata.com/#e001c501-9c09-4703-9e29-f91fbbf8db7c
 
         Returns:
             data: JSON String
         """
-        data = self.get_data('/upcoming', params=params)
+        data = self.get_data('/upcoming', params=None)
 
         return data
 

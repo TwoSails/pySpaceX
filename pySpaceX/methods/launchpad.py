@@ -24,16 +24,16 @@ class Launchpad:
 
         return data
 
-    def one_landing_pad(self, site_id: str):
+    def one_landing_pad(self, id):
         """Gets information about a single SpaceX launchpad
 
         Args:
-            site_id (str): site id of launch pad
+            id: site id of launch pad
 
         Returns:
             data: JSON String
         """
 
-        data = self.get_data(f'/{site_id}', params=None)
+        data = self.get_data('', params={'id': id})
 
         return data

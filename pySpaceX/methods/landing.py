@@ -7,7 +7,7 @@ class Landing:
     """
 
     def __init__(self, url):
-        self.url = f'{url}/landingpads'
+        self.url = f'{url}/landpads'
 
     def get_data(self, url, params):
         response = requests.get(self.url + url, params=params)
@@ -27,10 +27,13 @@ class Landing:
     def one_landing_pad(self, id):
         """Gets information about a single SpaceX landing pad
 
+        Args:
+            id: Landing Pad ID
+
         Returns:
             data: JSON String
         """
 
-        data = self.get_data(f'/{id}', params=None)
+        data = self.get_data('', params={'id': id})
 
         return data

@@ -14,7 +14,7 @@ class Roadster:
 
         return response.json()
 
-    def missions(self):
+    def roadster(self):
         """Gets information about SpaceX Roadster
 
         Returns:

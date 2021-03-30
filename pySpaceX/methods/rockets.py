@@ -24,16 +24,16 @@ class Rockets:
 
         return data
 
-    def one_rocket(self, rocket_id):
+    def one_rocket(self, id):
         """Gets information about a single SpaceX rocket
 
         Args:
-            rocket_id (str): rocket id
+            id: rocket id
 
         Returns:
             data: JSON String
         """
 
-        data = self.get_data(f'/{rocket_id}', params=None)
+        data = self.get_data('', params={'id': id})
 
         return data
