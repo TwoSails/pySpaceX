@@ -6,7 +6,7 @@ with open('README.md', 'r') as file:
 setuptools.setup(
     name='pySpaceX',
     author='TwoSails',
-    version='1.0.1',
+    version='1.1.1',
     description='An unofficial python3 SpaceX API wrapper',
     long_description=long_description,
     packages=setuptools.find_packages(),
