@@ -2,4 +2,7 @@ from pySpaceX import space
 
 api = space.Space()
 
-print(api.get_roadster())
+roadster = api.get_roadster()
+
+print(roadster.missions())
+

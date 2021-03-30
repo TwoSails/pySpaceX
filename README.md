@@ -5,7 +5,6 @@ This is an unofficial Python3 [SpaceX API](https://docs.spacexdata.com) wrapper
 Currently unavailable on PyPi
 
 To install you can simply install the package by using:
-
 `python3 -m pip install pySpaceX`
 
 The code can also be directly downloaded from the latest release:
@@ -34,7 +33,7 @@ print(dragon.one_dragon('C112'))
 ```
 
 ## Documentation
-Too come in a later commit.
+To come in a later commit.
 
 ## Contributing
 Feel free to contribute by opening an [issue](https://github.com/TwoSails/pySpaceX/issues) or a [pull request](https://github.com/TwoSails/pySpaceX/pulls).

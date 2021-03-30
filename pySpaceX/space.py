@@ -26,10 +26,10 @@ class Space:
     Represents SpaceAPI object with general methods
     """
 
-    __version__ = '1.0.1'
+    __version__ = '1.1.0'
 
     def __init__(self):
-        self.APIver = 'v3'
+        self.APIver = 'v4'
         self.url = f'https://api.spacexdata.com/{self.APIver}'
 
     def get_data(self, params):
