@@ -1,8 +1,34 @@
-# pySpaceX
-This is an unofficial Python3 [SpaceX API](https://docs.spacexdata.com) wrapper
+<h1 align="center">
+    PySpaceX
+</h1>
+<hr>
+<h3 align="center">
+  Easily access SpaceX's API
+</h3>
+<p align="center">
+  pySpaceX is an open-source API wrapper to make it easier to access data from the unofficial <a href="https://github.com/r-spacex/SpaceX-API">SpaceX API</a> 
+</p>
+
+<p align="center">
+  <a href="https://pypi.org/project/pySpaceX/">
+    <img alt="GitHub all releases" src="https://pepy.tech/badge/pyspacex">
+  </a>
+  <a href="https://github.com/TwoSails/pySpaceX/releases">
+    <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/TwoSails/pySpaceX">
+  </a>
+</p>
+
+<h3 align="center">
+  <a href="https://asyncpixel.readthedocs.org">Docs</a>
+  <span> · </span>
+  <a href="https://github.com/TwoSails/pySpaceX/issues">Report a bug</a>
+  <span> · </span>
+  <a href="https://pypi.org/project/pySpaceX/">PyPi</a>
+</h3>
+
+<hr>
 
 ## Installation
-Currently unavailable on PyPi
 
 To install you can simply install the package by using:
 `python3 -m pip install pySpaceX`
@@ -33,7 +59,7 @@ print(dragon.one_dragon('C112'))
 ```
 
 ## Documentation
-To come in a later commit.
+Available at, https://pypi.org/project/pySpaceX
 
 ## Contributing
 Feel free to contribute by opening an [issue](https://github.com/TwoSails/pySpaceX/issues) or a [pull request](https://github.com/TwoSails/pySpaceX/pulls).
