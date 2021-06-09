@@ -1,4 +1,5 @@
 import requests
+from pySpaceX.exceptions import ApiNoSuccess
 
 
 class Launches:
@@ -9,73 +10,61 @@ class Launches:
     def __init__(self, url):
         self.url = f'{url}/launches'
 
-    def get_data(self, url, params):
-        response = requests.get(self.url + url, params=params)
+    def _get_data(self, url, params):
+        if params is not None:
+            response = requests.get(self.url + f"/{params}")
+        else:
+            response = requests.get(self.url)
 
-        return response.json()
+        if response.status_code == 404:
+            raise ApiNoSuccess
+        else:
+            return response.json()
 
-    def launches(self):
-        """Gets general launch information about SpaceX Launches
-
-        Returns:
-            data: JSON String
+    def launches(self) -> list:
         """
-        data = self.get_data('', params=None)
+        Returns general launch information about all SpaceX Launches
+        """
+        data = self._get_data('', params=None)
 
         return data
 
-    def one_launch(self, id):
-        """Gets information on one Launch
-
-        Args:
-            id: launch id
-
-        Returns:
-            data: JSON String
+    def one_launch(self, id: str) -> dict:
         """
-
-        params = {'id': id}
-
-        data = self.get_data("", params=params)
+        Returns information on one Launch
+        :param id: ID of Launch
+        """
+        data = self._get_data("", params=id)
 
         return data
 
-    def past_launches(self):
-        """Gets past launch information about SpaceX Launches
-
-        Returns:
-            data: JSON String
+    def past_launches(self) -> list:
         """
-        data = self.get_data('/past', params=None)
+        Returns past launch information about SpaceX Launches
+        """
+        data = self._get_data('/past', params=None)
 
         return data
 
-    def upcoming_launch(self):
-        """Gets upcoming launch information about SpaceX Launches
-
-        Returns:
-            data: JSON String
+    def upcoming_launches(self) -> list:
         """
-        data = self.get_data('/upcoming', params=None)
+        Returns upcoming launch information about SpaceX Launches
+        """
+        data = self._get_data('/upcoming', params=None)
 
         return data
 
-    def latest_launch(self):
-        """Gets latest launch information about SpaceX Launch
-
-        Returns:
-            data: JSON String
+    def latest_launch(self) -> dict:
         """
-        data = self.get_data('/latest', params=None)
+        Returns latest launch information about SpaceX Launch
+        """
+        data = self._get_data('/latest', params=None)
 
         return data
 
-    def next_launch(self):
-        """Gets next launch information about SpaceX Launch
-
-        Returns:
-            data: JSON String
+    def next_launch(self) -> dict:
+        """Returns next launch information about SpaceX Launch
         """
-        data = self.get_data('/next', params=None)
+        data = self._get_data('/next', params=None)
 
         return data

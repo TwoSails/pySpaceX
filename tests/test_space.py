@@ -4,5 +4,5 @@ api = space.Space()
 
 capsule = api.get_capsule()
 
-print(capsule.capsules())
+print(capsule.one_capsule('C103'))
 

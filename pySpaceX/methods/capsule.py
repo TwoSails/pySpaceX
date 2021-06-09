@@ -1,4 +1,5 @@
 import requests
+from pySpaceX.exceptions import ApiNoSuccess
 
 
 class Capsule:
@@ -9,31 +10,31 @@ class Capsule:
     def __init__(self, url):
         self.url = f'{url}/capsules'
 
-    def get_data(self, url, params):
-        response = requests.get(self.url + url, params=params)
+    def _get_data(self, params):
+        if params is not None:
+            response = requests.get(self.url + f"/{params}")
+        else:
+            response = requests.get(self.url)
 
-        return response.json()
+        if response.status_code == 404:
+            raise ApiNoSuccess
+        else:
+            return response.json()
 
-    def capsules(self):
-        """Gets information about all capsules
-
-        Returns:
-            data: JSON String
+    def capsules(self) -> list:
         """
-        data = self.get_data('', params=None)
+        Returns information about all capsules
+        """
+        data = self._get_data(params=None)
 
         return data
 
-    def one_capsule(self, id):
-        """Gets information about one capsule
-
-        Args:
-            id: Capsule serial number
-
-        Returns:
-            data: JSON String
+    def one_capsule(self, id: str) -> dict:
         """
-        params = {'id': id}
-        data = self.get_data('', params=params)
+        Returns information about one capsule
 
-        return data[0]
+        :param id: Capsule serial number
+        """
+        data = self._get_data(params=id)
+
+        return data

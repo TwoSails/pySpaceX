@@ -1,4 +1,5 @@
 import requests
+from pySpaceX.exceptions import ApiNoSuccess
 
 
 class Starlink:
@@ -9,31 +10,31 @@ class Starlink:
     def __init__(self, url):
         self.url = f'{url}/starlink'
 
-    def get_data(self, url, params):
-        response = requests.get(self.url + url, params=params)
+    def _get_data(self, params):
+        if params is not None:
+            response = requests.get(self.url + f"/{params}")
+        else:
+            response = requests.get(self.url)
 
-        return response.json()
+        if response.status_code == 404:
+            raise ApiNoSuccess
+        else:
+            return response.json()
 
-    def starlink(self):
-        """Gets information about all starlink sats
-
-        Returns:
-            data: JSON String
+    def starlink(self) -> list:
         """
-        data = self.get_data('', params=None)
+        Returns information about all starlink sats
+        """
+        data = self._get_data(None)
 
         return data
 
-    def one_starlink(self, id):
-        """Gets information about one starlink sat
-
-        Args:
-            id: Capsule serial number
-
-        Returns:
-            data: JSON String
+    def one_starlink(self, id: str) -> dict:
         """
-        params = {'id': id}
-        data = self.get_data('', params=params)
+        Returns information about one starlink sat
 
-        return data[0]
+        :param id: ID of starlink satellite
+        """
+        data = self._get_data(id)
+
+        return data

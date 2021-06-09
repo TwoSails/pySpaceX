@@ -1,4 +1,5 @@
 import requests
+from pySpaceX.exceptions import ApiNoSuccess
 
 
 class Launchpad:
@@ -9,31 +10,32 @@ class Launchpad:
     def __init__(self, url):
         self.url = f'{url}/launchpads'
 
-    def get_data(self, url, params):
-        response = requests.get(self.url + url, params=params)
+    def _get_data(self, params):
+        if params is not None:
+            response = requests.get(self.url + f"/{params}")
+        else:
+            response = requests.get(self.url)
 
-        return response.json()
+        if response.status_code == 404:
+            raise ApiNoSuccess
+        else:
+            return response.json()
 
-    def landing_pads(self):
-        """Gets information about all SpaceX launchpads
-
-        Returns:
-            data: JSON String
+    def landing_pads(self) -> list:
         """
-        data = self.get_data('', params=None)
+        Returns information about all SpaceX launchpads
+        """
+        data = self._get_data(None)
 
         return data
 
-    def one_landing_pad(self, id):
-        """Gets information about a single SpaceX launchpad
+    def one_landing_pad(self, id: str) -> dict:
+        """
+        Returns information about a single SpaceX launchpad
 
-        Args:
-            id: site id of launch pad
-
-        Returns:
-            data: JSON String
+        :param id: ID of a launchpad
         """
 
-        data = self.get_data('', params={'id': id})
+        data = self._get_data(id)
 
         return data

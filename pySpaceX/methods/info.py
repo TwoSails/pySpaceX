@@ -1,4 +1,5 @@
 import requests
+from pySpaceX.exceptions import ApiNoSuccess
 
 
 class Info:
@@ -9,28 +10,30 @@ class Info:
     def __init__(self, url):
         self.url = f'{url}/'
 
-    def get_data(self, url, params):
-        response = requests.get(self.url + url, params=params)
+    def _get_data(self, url, params):
+        if params is not None:
+            response = requests.get(self.url + url + f"/{params}")
+        else:
+            response = requests.get(self.url + url)
 
-        return response.json()
+        if response.status_code == 404:
+            raise ApiNoSuccess
+        else:
+            return response.json()
 
-    def company(self):
-        """Gets general company information about SpaceX
-
-        Returns:
-            data: JSON String
+    def company(self) -> dict:
         """
-        data = self.get_data('company', params=None)
+        Returns general company information about SpaceX
+        """
+        data = self._get_data('company', params=None)
 
         return data
 
-    def get_api(self):
-        """Gets information on the API
-
-        Returns:
-            data: JSON String
+    def get_api(self) -> dict:
+        """
+        Returns information on the API
         """
 
-        data = self.get_data('', params=None)
+        data = self._get_data('', params=None)
 
         return data

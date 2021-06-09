@@ -1,2 +1,4 @@
 # Project exclude paths
 /venv/
+/docs/build/
+/tests/test_space.py

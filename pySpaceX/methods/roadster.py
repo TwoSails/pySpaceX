@@ -1,4 +1,5 @@
 import requests
+from pySpaceX.exceptions import ApiNoSuccess
 
 
 class Roadster:
@@ -9,17 +10,21 @@ class Roadster:
     def __init__(self, url):
         self.url = f'{url}/roadster'
 
-    def get_data(self, url, params):
-        response = requests.get(self.url + url, params=params)
+    def _get_data(self, params):
+        if params is not None:
+            response = requests.get(self.url + f"/{params}")
+        else:
+            response = requests.get(self.url)
 
-        return response.json()
+        if response.status_code == 404:
+            raise ApiNoSuccess
+        else:
+            return response.json()
 
-    def roadster(self):
-        """Gets information about SpaceX Roadster
-
-        Returns:
-            data: JSON String
+    def roadster(self) -> dict:
         """
-        data = self.get_data('', params=None)
+        Returns information about SpaceX Roadster
+        """
+        data = self._get_data(None)
 
         return data

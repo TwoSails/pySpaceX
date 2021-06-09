@@ -1,4 +1,5 @@
 import requests
+from pySpaceX.exceptions import ApiNoSuccess
 
 
 class Fairings:
@@ -9,31 +10,30 @@ class Fairings:
     def __init__(self, url):
         self.url = f'{url}/fairings'
 
-    def get_data(self, url, params):
-        response = requests.get(self.url + url, params=params)
+    def _get_data(self, params):
+        if params is not None:
+            response = requests.get(self.url + f"/{params}")
+        else:
+            response = requests.get(self.url)
 
-        return response.json()
+        if response.status_code == 404:
+            raise ApiNoSuccess
+        else:
+            return response.json()
 
-    def fairings(self):
-        """Gets information about all fairings
-
-        Returns:
-            data: JSON String
+    def fairings(self) -> list:
         """
-        data = self.get_data('', params=None)
+        Returns information about all fairings
+        """
+        data = self._get_data(None)
 
         return data
 
-    def one_fairing(self, id):
+    def one_fairing(self, id: str) -> dict:
         """Gets information about one fairing
 
-        Args:
-            id: Fairing serial number
-
-        Returns:
-            data: JSON String
+        :param id: Fairing serial number
         """
-        params = {'id': id}
-        data = self.get_data('', params=params)
+        data = self._get_data(id)
 
-        return data[0]
+        return data

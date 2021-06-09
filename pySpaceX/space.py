@@ -29,13 +29,13 @@ class Space:
     Represents SpaceAPI object with general methods
     """
 
-    __version__ = '1.1.1'
+    __version__ = '1.2.0'
 
     def __init__(self):
         self.APIver = 'v4'
         self.url = f'https://api.spacexdata.com/{self.APIver}'
 
-    def get_data(self, params):
+    def _get_data(self, params):
         """
         Executes HTTP request with base url and given endpoints
 
@@ -48,134 +48,130 @@ class Space:
 
         return response
 
-    def get_capsule(self):
-        """Gets information about SpaceX capsules
+    def get_capsule(self) -> Capsule:
+        """
+        Gets information about SpaceX capsules
 
-        Returns:
-            Capsule: Capsule Object
+        :return: Capsule object
         """
         return Capsule(self.url)
 
-    def get_crew(self):
-        """Gets information about SpaceX crew members
+    def get_crew(self) -> Crew:
+        """
+        Gets information about SpaceX crew members
 
-        Returns:
-            Crew: Crew Object
+        :return: Crew Object
         """
         return Crew(self.url)
 
-    def get_core(self):
-        """Gets information about SpaceX core stages
+    def get_core(self) -> Cores:
+        """
+        Gets information about SpaceX core stages
 
-        Returns:
-            Cores: Cores Object
+        :return: Cores Object
         """
         return Cores(self.url)
 
-    def get_dragon(self):
-        """Gets information about SpaceX dragon capsules
+    def get_dragon(self) -> Dragons:
+        """
+        Gets information about SpaceX dragon capsules
 
-        Returns:
-            Dragons: Dragons Object
+        :return: Dragons Object
         """
         return Dragons(self.url)
 
-    def get_history(self):
-        """Gets information about SpaceX historical events
+    def get_history(self) -> History:
+        """
+        Gets information about SpaceX historical events
 
-        Returns:
-            History: History Object
+        :return: History Object
         """
         return History(self.url)
 
-    def get_landing_pads(self):
-        """Gets information about SpaceX landing pads
+    def get_landing_pads(self) -> Landing:
+        """
+        Gets information about SpaceX landing pads
 
-        Returns:
-            Landing: Landing Object
+        :return: Landing Object
         """
         return Landing(self.url)
 
-    def get_launches(self):
-        """Gets information about SpaceX launches
+    def get_launches(self) -> Launches:
+        """
+        Gets information about SpaceX launches
 
-        Returns:
-            Launches: Launches Object
+        :return: Launches Object
         """
         return Launches(self.url)
 
-    def get_launchpad(self):
-        """Gets information about SpaceX launchpad
+    def get_launchpad(self) -> Launchpad:
+        """
+        Gets information about SpaceX launchpad
 
-        Returns:
-            Launchpad: Launchpad Object
+        :return: Launchpad Object
         """
         return Launchpad(self.url)
 
-    def get_missions(self):
-        """Gets information about SpaceX missions
+    def get_missions(self) -> Missions:
+        """
+        Gets information about SpaceX missions
 
-        Returns:
-            Missions: Missions Object
+        :return: Missions Object
         """
         return Missions(self.url)
 
-    def get_payloads(self):
-        """Gets information about SpaceX payloads
+    def get_payloads(self) -> Payloads:
+        """
+        Gets information about SpaceX payloads
 
-        Returns:
-            Payloads: Payloads Object
+        :return: Payloads Object
         """
         return Payloads(self.url)
 
-    def get_fairings(self):
-        """Gets information about SpaceX fairings
+    def get_fairings(self) -> Fairings:
+        """
+        Gets information about SpaceX fairings
 
-        Returns:
-            Fairings: Fairings Object
+        :return: Fairings Object
         """
         return Fairings(self.url)
 
-    def get_rockets(self):
-        """Gets information about SpaceX rockets
+    def get_rockets(self) -> Rockets:
+        """
+        Gets information about SpaceX rockets
 
-        Returns:
-            Rockets: Rockets Object
+        :return: Rockets Object
         """
         return Rockets(self.url)
 
-    def get_roadster(self):
-        """Gets information about SpaceX roadster
+    def get_roadster(self) -> Roadster:
+        """
+        Gets information about SpaceX roadster
 
-        Returns:
-            Roadster: Roadster Object
+        :return: Roadster Object
         """
         return Roadster(self.url)
 
-    def get_ships(self):
-        """Gets information about SpaceX ships
+    def get_ships(self) -> Ships:
+        """
+        Gets information about SpaceX ships
 
-        Returns:
-            Ships: Ships Object
+        :return: Ships Object
         """
         return Ships(self.url)
 
-    def get_starlink(self):
-        """Gets information about SpaceX Starlink sats
+    def get_starlink(self) -> Starlink:
+        """
+        Gets information about SpaceX Starlink sats
 
-        Returns:
-            Starlink: Starlink Object
+        :return: Starlink Object
         """
         return Starlink(self.url)
 
-    def get_info(self):
-        """Gets information about SpaceX and the api
+    def get_info(self) -> Info:
+        """
+        Gets information about SpaceX and the API
 
-        Returns:
-            Info: Info Object
+        :return: Info Object
         """
         return Info(self.url)
-
-
-
-

@@ -1,4 +1,5 @@
 import requests
+from pySpaceX.exceptions import ApiNoSuccess
 
 
 class Dragons:
@@ -9,29 +10,31 @@ class Dragons:
     def __init__(self, url):
         self.url = f'{url}/dragons'
 
-    def get_data(self, params):
-        response = requests.get(self.url, params=params)
+    def _get_data(self, params):
+        if params is not None:
+            response = requests.get(self.url + f"/{params}")
+        else:
+            response = requests.get(self.url)
 
-        return response.json()
+        if response.status_code == 404:
+            raise ApiNoSuccess
+        else:
+            return response.json()
 
-    def dragons(self):
-        """Gets information on all dragon capsules
-
-        Returns:
-            data: JSON String
+    def dragons(self) -> list:
         """
-        data = self.get_data(params=None)
+        Returns information on all dragon capsules
+        """
+        data = self._get_data(None)
 
         return data
 
-    def one_dragon(self, id):
-        """Gets information on a single dragon capsule
-
-        Returns:
-            data: JSON String
+    def one_dragon(self, id: str) -> dict:
         """
+        Returns information on a single dragon capsule
 
-        params = {'id': id}
-        data = self.get_data(params=params)
+        :param id: ID of the dragon
+        """
+        data = self._get_data(id)
 
-        return data[0]
+        return data

@@ -1,4 +1,6 @@
 import requests
+from pySpaceX.exceptions import ApiNoSuccess
+from typing import Optional
 
 
 class Ships:
@@ -9,34 +11,30 @@ class Ships:
     def __init__(self, url):
         self.url = f'{url}/ships'
 
-    def get_data(self, url, params):
-        response = requests.get(self.url + url, params=params)
+    def _get_data(self, params):
+        if params is not None:
+            response = requests.get(self.url + f"/{params}")
+        else:
+            response = requests.get(self.url)
 
-        return response.json()
+        if response.status_code == 404:
+            raise ApiNoSuccess
+        else:
+            return response.json()
 
-    def payloads(self, params: dict = None):
-        """Gets information about all SpaceX Ships
-
-        Args:
-            params (dict, optional): https://docs.spacexdata.com/#e520e500-0421-4774-8bcb-8d07b7dfa222
-
-        Returns:
-            data: JSON String
+    def ships(self) -> list:
         """
-        data = self.get_data('', params=params)
+        Returns information about all SpaceX Ships
+        """
+        data = self._get_data(None)
 
         return data
 
-    def one_payload(self, id):
-        """Gets information about a single SpaceX ship
-
-        Args:
-            id: ship id
-
-        Returns:
-            data: JSON String
+    def one_payload(self, id: str) -> dict:
         """
-
-        data = self.get_data('', params={'id': id})
+        Returns information about a single SpaceX ship
+        :param id: ship id
+        """
+        data = self._get_data(id)
 
         return data

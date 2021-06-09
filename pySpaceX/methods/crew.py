@@ -1,4 +1,5 @@
 import requests
+from pySpaceX.exceptions import ApiNoSuccess
 
 
 class Crew:
@@ -9,31 +10,31 @@ class Crew:
     def __init__(self, url):
         self.url = f'{url}/crew'
 
-    def get_data(self, url, params):
-        response = requests.get(self.url + url, params=params)
+    def _get_data(self, params):
+        if params is not None:
+            response = requests.get(self.url + f"/{params}")
+        else:
+            response = requests.get(self.url)
 
-        return response.json()
+        if response.status_code == 404:
+            raise ApiNoSuccess
+        else:
+            return response.json()
 
-    def members(self):
-        """Gets information about all crew members
-
-        Returns:
-            data: JSON String
+    def members(self) -> list:
         """
-        data = self.get_data('', params=None)
+        Returns information about all crew members
+        """
+        data = self._get_data(None)
 
         return data
 
-    def one_crew_member(self, id):
-        """Gets information about one crew member
-
-        Args:
-            id: ID of crew member
-
-        Returns:
-            data: JSON String
+    def one_crew_member(self, id: str) -> dict:
         """
-        params = {'id': id}
-        data = self.get_data('', params=params)
+        Returns information about one crew member
 
-        return data[0]
+        :param id: ID of crew member
+        """
+        data = self._get_data(id)
+
+        return data
