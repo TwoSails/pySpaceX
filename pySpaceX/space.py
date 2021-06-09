@@ -2,7 +2,7 @@
 Program: A www.spacexdata.com API Wrapper
 Author: TwoSails
 Description: A simple python API Wrapper made for use with the www.spacexdata.com
-Version: 1.0.1
+Version: 1.2.0
 """
 
 import requests

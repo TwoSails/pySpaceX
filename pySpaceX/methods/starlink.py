@@ -4,7 +4,7 @@ from pySpaceX.exceptions import ApiNoSuccess
 
 class Starlink:
     """
-    Represents SpaceX Capsule Object
+    Represents SpaceX Starlink Object
     """
 
     def __init__(self, url):

@@ -5,7 +5,7 @@ from typing import Optional
 
 class Ships:
     """
-    Represents SpaceX Payloads Object
+    Represents SpaceX Ships Object
     """
 
     def __init__(self, url):

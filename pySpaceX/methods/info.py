@@ -4,7 +4,7 @@ from pySpaceX.exceptions import ApiNoSuccess
 
 class Info:
     """
-    Represents SpaceX Info and API info Object
+    Represents SpaceX Company Info and API info Object
     """
 
     def __init__(self, url):

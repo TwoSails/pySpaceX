@@ -4,7 +4,7 @@ from pySpaceX.exceptions import ApiNoSuccess
 
 class Crew:
     """
-    Represents SpaceX Capsule Object
+    Represents SpaceX Crew Object
     """
 
     def __init__(self, url):
