@@ -19,7 +19,7 @@
 </p>
 
 <h3 align="center">
-  <a href="https://asyncpixel.readthedocs.org">Docs</a>
+  <a href="https://pySpaceX.readthedocs.org">Docs</a>
   <span> · </span>
   <a href="https://github.com/TwoSails/pySpaceX/issues">Report a bug</a>
   <span> · </span>
@@ -59,7 +59,7 @@ print(dragon.one_dragon('C112'))
 ```
 
 ## Documentation
-Available at, https://pypi.org/project/pySpaceX
+Available at https://pypi.org/project/pySpaceX
 
 ## Contributing
 Feel free to contribute by opening an [issue](https://github.com/TwoSails/pySpaceX/issues) or a [pull request](https://github.com/TwoSails/pySpaceX/pulls).
