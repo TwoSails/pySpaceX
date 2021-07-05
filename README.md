@@ -6,7 +6,7 @@
   Easily access SpaceX's API
 </h3>
 <p align="center">
-  pySpaceX is an open-source API wrapper to make it easier to access data from the unofficial <a href="https://github.com/r-spacex/SpaceX-API">SpaceX API</a> 
+  pySpaceX is an open-source API wrapper to make it easier to access data from the unofficial <a href="https://github.com/r-spacex/SpaceX-API">v4 SpaceX API</a> 
 </p>
 
 <p align="center">
