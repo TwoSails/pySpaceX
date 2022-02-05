@@ -47,15 +47,15 @@ api = Space()
 
 To get information about the API use:
 ```python
-info = api.get_info() # Returns the info object
+info = api.get_info()  # Returns the info object
 
-print(info.get_api())
+print(info.company())  # Returns data about the SpaceX company
 ```
 You can also get information about a dragon capsule by using:
 ```python
-dragon = api.get_dragon() # Returns the dragon object
+dragon = api.get_dragon()  # Returns the dragon object
 
-print(dragon.one_dragon('C112'))
+print(dragon.one_dragon('5e9d058859b1ffd8e2ad5f90'))
 ```
 
 ## Documentation
